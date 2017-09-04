@@ -11,7 +11,7 @@ class CategoryController extends CommonController
         $data=(new Category)->tree();
         return view('admin.category.index')->with('data',$data);
     }
-    public function changeOrder(){
+    public function changeOrder(){//修改提交测试
         $input= Input::all();
         $cate=  Category::find($input['cate_id']);
         $cate->cate_order=$input['cate_order'];
