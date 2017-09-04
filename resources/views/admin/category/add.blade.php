@@ -12,6 +12,17 @@
 	<div class="result_wrap">
         <div class="result_title">
             <h3>快捷操作</h3>
+            <div class="mark">
+            @if(!is_object($errors))
+                {{$errors}}
+            @else
+                @if(count($errors)>0)
+                    @foreach($errors->all() as $error)
+                        <p>{{$error}}</p>
+                    @endforeach
+                @endif
+            @endif
+        </div>
         </div>
         <div class="result_content">
             <div class="short_wrap">
@@ -43,7 +54,7 @@
                     <tr>
                         <th><i class="require">*</i>分类名称：</th>
                         <td>
-                            <input type="text" name="cate_name">
+                            <input type="text" name="cate_name" value="{{old('cate_name')}}">
                             <span><i class="fa fa-exclamation-circle yellow"></i>分类名称必须填写</span>
                         </td>
                     </tr>
@@ -51,19 +62,19 @@
                     <tr>
                         <th><i class="require">*</i>分类标题：</th>
                         <td>
-                            <input type="text" class="lg" name="cate_title">
+                            <input type="text" class="lg" name="cate_title" value="{{old('cate_title')}}">
                         </td>
                     </tr>
                     <tr>
                         <th>关键字：</th>
                         <td>
-                            <textarea name="cate_keywords"></textarea>
+                            <textarea name="cate_keywords">{{old('cate_keywords')}}</textarea>
                         </td>
                     </tr>
                     <tr>
                         <th>描述：</th>
                         <td>
-                            <textarea name="cate_description"></textarea>
+                            <textarea name="cate_description">{{old('cate_description')}}</textarea>
                         </td>
                     </tr>
                     <tr>

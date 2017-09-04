@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Model\Category;
 use Request as Input;
+use Validator;
 class CategoryController extends CommonController
 {
     //get/head,全部分类列表
@@ -40,8 +41,28 @@ class CategoryController extends CommonController
     
     //post-添加文章分类
     public function store(){
-        $input=Input::all();
-        dd($input);
+        $input=Input::except('_token');
+        Input::flash();
+        $rules=[
+            'cate_name'=>'required',
+            'cate_title'=>'required',
+        ];
+        //确认一致匹配字段：confirmed;长度：between
+        //官方密码确认名：password_confirmation
+        $message=[
+            'cate_name.required'=>'分类名称不能为空',
+            'cate_title.required'=>'分类标题',
+        ];
+        $validator=Validator::make($input,$rules,$message);
+        if(!$validator->passes()){
+            return redirect()->back()->withErrors($validator);
+        }
+        $res=Category::create($input);
+        if(!$res){
+            return redirect()->back()->withErrors(['msg'=>'添加父级分类失败，请稍后再试']);
+        }else{
+            return redirect('admin/category');
+        }
     }
     
     //get 单个显示
