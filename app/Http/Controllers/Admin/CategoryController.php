@@ -12,6 +12,7 @@ class CategoryController extends CommonController
         $data=(new Category)->tree();
         return view('admin.category.index')->with('data',$data);
     }
+    
     public function changeOrder(){//修改提交测试
         $input= Input::all();
         $cate=  Category::find($input['cate_id']);
@@ -66,8 +67,10 @@ class CategoryController extends CommonController
     }
     
     //get 单个显示
-    public function show(){
-        
+    public function show($cate_id){
+        $data=Category::find($cate_id);
+        $list= Category::where(['cate_pid'=>0])->get();
+        return view('admin.category.edit')->with(['lists'=>$list,'item'=>$data]);
     }
     //delete 删除单个分类
     public function destroy(){
@@ -78,8 +81,10 @@ class CategoryController extends CommonController
         
     }
     //编辑分类列表；
-    public function edit(){
+    public function edit($cate_id){
         
+        $input=Input::all();
+        dd($input);
     }
     
 }
