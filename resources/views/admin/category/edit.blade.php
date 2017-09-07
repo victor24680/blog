@@ -35,8 +35,9 @@
     <!--结果集标题与导航组件 结束-->
     
     <div class="result_wrap">
-        <form action="{{url('admin/category')}}" method="post">
+        <form action="{{url('admin/category',[$item->cate_id])}}" method="post">
             {{csrf_field()}}
+            <input type="hidden" name="_method" value="put" />
             <table class="add_tab">
                 <tbody>
                     <tr>
@@ -46,7 +47,7 @@
                                 <option value="0">==顶级分类==</option>
                                 @foreach($lists as $vo)
                                 <option value="{{$vo->cate_id}}"
-                                        @if($item->cate_id==$vo->cate_id)
+                                        @if($item->cate_pid==$vo->cate_id)
                                             selected
                                         @endif
                                         >{{$vo->cate_name}}</option>

@@ -70,8 +70,8 @@
                             <td>{{$v->cate_title}}</td>
                             <td>{{$v->cate_view}}</td>
                             <td>
-                                <a href="{{url('admin/category',[$v->cate_id])}}">修改</a>
-                                <a href="#">删除</a>
+                                <a href="{{url('admin/category/'.$v->cate_id.'/edit')}}">修改</a>
+                                <a href="javascript:void(0)" onclick="promptDel({{$v->cate_id}})">删除</a>
                             </td>
                         </tr>
                     @endforeach
@@ -120,6 +120,25 @@
             }else{
                 layer.alert('排序更新失败');
             }
+        });
+    }
+    function promptDel(cate_id){
+        layer.confirm('您确认要删除吗？', {
+            btn: ['确认','取消'] //按钮
+        }, function(){
+            $.post("{{url('admin/category')}}/"+cate_id,{'cate_id':cate_id,'_token':'{{csrf_token()}}','_method':'delete'},function(data){
+                if(data.error==0){
+                    layer.msg('删除成功', {icon: 6});
+                }else{
+                    layer.msg('删除失败', {icon: 5});
+                }
+            },'json');
+        }, function(){
+            /*
+            layer.msg('您已经取消', {
+                time: 1000, //20s后自动关闭
+                btn: ['明白了']
+            });*/
         });
     }
 </script>
