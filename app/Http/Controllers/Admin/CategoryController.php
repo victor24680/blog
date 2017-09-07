@@ -71,6 +71,7 @@ class CategoryController extends CommonController
         
     }
     //delete 删除单个分类
+    //方法一:$res=Category::destroy($input->cate_id);
     public function destroy($cate_id){
         //$input=Input::all();
         //$res=Category::destroy($input->cate_id); //方法一
@@ -81,15 +82,7 @@ class CategoryController extends CommonController
             return ['error'=>1];
         }
     }
-    //更新分$input=Input::all();
-//        //方法一
-//        //$res=Category::destroy($input->cate_id);
-//        $res=  Category::where(['cate_id'=>$input->cate_id])->delete();
-//        if($res){
-//            return ['error'=>0];
-//        }else{
-//            return ['error'=>1];
-//        }类PUT提交
+    //PUT提交
     public function update($cate_id){
         $input=Input::except(['_method','_token']);
         $rules=[
@@ -110,8 +103,7 @@ class CategoryController extends CommonController
         if(!$data){
             return redirect()->back()->withErrors(['msg'=>'找不到相关数据，请核对后再修改']);
         }
-        $result=Category::where(['cate_id'=>$cate_id])->update($input);
-        dd($result);
+        $res=Category::where(['cate_id'=>$cate_id])->update($input);
         if($res){
             return redirect('admin/index');
         }else{
