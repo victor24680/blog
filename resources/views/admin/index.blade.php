@@ -26,8 +26,8 @@
             <li>
             	<h3><i class="fa fa-fw fa-clipboard"></i>常用操作</h3>
                 <ul class="sub_menu">
-                    <li><a href="{{url('admin/add')}}" target="main"><i class="fa fa-fw fa-plus-square"></i>添加页</a></li>
-                    <li><a href="{{url('admin/list')}}" target="main"><i class="fa fa-fw fa-list-ul"></i>列表页</a></li>
+                    <li><a href="{{url('admin/category/create')}}" target="main"><i class="fa fa-fw fa-plus-square"></i>添加分类</a></li>
+                    <li><a href="{{url('admin/category')}}" target="main"><i class="fa fa-fw fa-list-ul"></i>分类列表</a></li>
                     <li><a href="{{url('admin/tab')}}" target="main"><i class="fa fa-fw fa-list-alt"></i>tab页</a></li>
                     <li><a href="{{url('admin/img')}}" target="main"><i class="fa fa-fw fa-image"></i>图片列表</a></li>
                 </ul>

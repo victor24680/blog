@@ -49,6 +49,25 @@ CREATE TABLE `blog_admin` (
 
 insert  into `blog_admin`(`id`,`username`,`password`) values (1,'admin','eyJpdiI6IjVaQTlIMG1QcFdtMm5hVjdsbDdSTmc9PSIsInZhbHVlIjoiR0l6U0ExOFcrRmFFYXFvT2lGMzltUT09IiwibWFjIjoiYTJhNDdkMjJmZjMwMzZiZTU2MGNkNTY4YmQzMWVlYzg3Mzg2Y2RmOGJmOGYzNTE1ZjE3OWVmYTYwNmI3MTYwYyJ9');
 
+/*Table structure for table `blog_article` */
+
+DROP TABLE IF EXISTS `blog_article`;
+
+CREATE TABLE `blog_article` (
+  `art_id` int(11) NOT NULL AUTO_INCREMENT,
+  `art_title` varchar(255) DEFAULT NULL COMMENT '文章标题',
+  `art_tag` varchar(255) DEFAULT NULL COMMENT '文章关键字',
+  `art_description` varchar(255) DEFAULT NULL COMMENT '文章描述',
+  `art_thumb` varchar(255) DEFAULT NULL COMMENT '缩略图',
+  `art_content` text COMMENT '内容',
+  `art_time` int(11) DEFAULT '0' COMMENT '发布时间',
+  `art_editor` varchar(50) DEFAULT NULL COMMENT '作者',
+  `art_view` int(11) DEFAULT '0' COMMENT '查看次数',
+  PRIMARY KEY (`art_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文章';
+
+/*Data for the table `blog_article` */
+
 /*Table structure for table `blog_category` */
 
 DROP TABLE IF EXISTS `blog_category`;

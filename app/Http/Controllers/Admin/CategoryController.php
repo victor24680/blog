@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Requests;
 use App\Http\Model\Category;
 use Request as Input;
 use Validator;
@@ -76,6 +75,7 @@ class CategoryController extends CommonController
         //$input=Input::all();
         //$res=Category::destroy($input->cate_id); //方法一
         $res=Category::where(['cate_id'=>$cate_id])->delete();
+        Category::where(['cate_pid'=>$cate_id])->update(['cate_pid'=>0]);
         if($res){
             return ['error'=>0];
         }else{
