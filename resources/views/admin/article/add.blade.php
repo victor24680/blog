@@ -82,10 +82,24 @@
                             <textarea name="art_description">{{old('art_description')}}</textarea>
                         </td>
                     </tr>
+                    
+                    
                     <tr>
                         <th>文章内容：</th>
                         <td>
-                            <textarea name="art_content">{{old('art_content')}}</textarea>
+                            <script type="text/javascript" charset="utf-8" src="{{asset('extend/ueditor/ueditor.config.js')}}"></script>
+                            <script type="text/javascript" charset="utf-8" src="{{asset('extend/ueditor/ueditor.all.min.js')}}"> </script>
+                            <script type="text/javascript" charset="utf-8" src="{{asset('extend/ueditor/lang/zh-cn/zh-cn.js')}}"></script>
+                            <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+                            <script>
+                                var ue = UE.getEditor('editor');
+                            </script>
+                            <style>
+                                .edui-default{line-height:28px;}
+                                div .edui-combox,div .edui-button-body,div .edui-splitbutton-body{overflow:hidden;height:20px;}
+                                div .edui-box{overflow:hidden;height:22px;}
+                            </style>
+                            <textarea name="art_content" >{{old('art_content')}}</textarea>
                         </td>
                     </tr>
                     <tr>
