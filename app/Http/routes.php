@@ -42,6 +42,8 @@ Route::group(['middleware'=>['admin.login']],function(){
     Route::get('/admin/img','Admin\IndexController@img'); 
     Route::resource('/admin/category','Admin\CategoryController');
     
+    Route::resource('/admin/article','Admin\ArticleContorller');
+    
     Route::post('/admin/cate/changeOrder','Admin\CategoryController@changeOrder');
 });
 
