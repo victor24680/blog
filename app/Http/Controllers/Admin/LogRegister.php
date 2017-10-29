@@ -13,7 +13,6 @@ use Validator;
 require_once(__DIR__.'/../../../../resources/org/Code.class.php');
 class LogRegister extends Controller
 {
-
     public function login(Request $request){
     	$check_user=session('user');
     	if($check_user){
