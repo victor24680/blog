@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Model\Links;
 class LinksController extends CommonController
 {
-
+	//友情链接管理【测试远程管理】
 	public function index(){
         $data=Links::orderBy('link_id','desc')->paginate(5);
         return view('admin.links.index')->with('data',$data);
