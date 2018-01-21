@@ -63,8 +63,9 @@ CREATE TABLE `blog_article` (
   `art_time` int(11) DEFAULT '0' COMMENT '发布时间',
   `art_editor` varchar(50) DEFAULT NULL COMMENT '作者',
   `art_view` int(11) DEFAULT '0' COMMENT '查看次数',
+  `cate_pid` int(11) DEFAULT '0' COMMENT '文章分类ID',
   PRIMARY KEY (`art_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文章';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='文章';
 
 /*Data for the table `blog_article` */
 
@@ -88,6 +89,23 @@ CREATE TABLE `blog_category` (
 
 insert  into `blog_category`(`cate_id`,`cate_name`,`cate_title`,`cate_keywords`,`cate_description`,`cate_view`,`cate_order`,`cate_pid`) values (1,'新闻','收集国内外最知名的资讯',NULL,NULL,0,11,0),(2,'体育','发展体育事业，增强国民体质',NULL,NULL,0,50,0),(3,'娱乐','人人都有自己的娱乐圈',NULL,NULL,0,0,0),(4,'热点新闻','最新新闻事件_热点信息',NULL,NULL,0,10,1),(5,'军事新闻','最新新闻事件_热点新闻',NULL,NULL,0,12,1),(6,'体育彩票','体育彩票管理中心',NULL,NULL,0,0,2),(7,'乐视体育','乐视体育—-最专业的体育新闻',NULL,NULL,0,0,2),(8,'腾讯体育','腾讯体育--人气最旺的体育',NULL,NULL,0,0,2);
 
+/*Table structure for table `blog_links` */
+
+DROP TABLE IF EXISTS `blog_links`;
+
+CREATE TABLE `blog_links` (
+  `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `link_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '名称',
+  `link_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '标题',
+  `link_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '链接地址',
+  `link_order` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
+  PRIMARY KEY (`link_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `blog_links` */
+
+insert  into `blog_links`(`link_id`,`link_name`,`link_title`,`link_url`,`link_order`) values (2,'锦绣钱程','钱程无限11','www.jinxqc.com',0),(3,'锦绣钱程','锦绣钱程','http://www.jinxqc.com',0),(4,'百度收藏','百度收藏页','http://www.baidu.com',0);
+
 /*Table structure for table `blog_migrations` */
 
 DROP TABLE IF EXISTS `blog_migrations`;
@@ -99,7 +117,7 @@ CREATE TABLE `blog_migrations` (
 
 /*Data for the table `blog_migrations` */
 
-insert  into `blog_migrations`(`migration`,`batch`) values ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1);
+insert  into `blog_migrations`(`migration`,`batch`) values ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2018_01_07_053232_create_links_table',2);
 
 /*Table structure for table `blog_password_resets` */
 

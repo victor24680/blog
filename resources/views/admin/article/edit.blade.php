@@ -35,8 +35,9 @@
     <!--结果集标题与导航组件 结束-->
     
     <div class="result_wrap">
-        <form action="{{url('admin/article')}}" method="post">
+        <form action="{{url('admin/article/'.$item->art_id)}}" method="post">
             {{csrf_field()}}
+            <input type="hidden" name="_method" value="put" />
             <table class="add_tab">
                 <tbody>
                     <tr>
@@ -44,7 +45,9 @@
                         <td>
                             <select name="cate_pid">
                                 @foreach($data as $vo)
-                                <option value="{{$vo->cate_id}}">{{$vo->_cate_name}}</option>
+                                <option value="{{$vo->cate_id}}"  @if($vo->cate_id == $item->cate_pid) selected @endif >
+                                    {{$vo->_cate_name}}
+                                </option>
                                 @endforeach
                             </select>
                         </td>
@@ -53,21 +56,21 @@
                     <tr>
                         <th><i class="require">*</i>文章标题：</th>
                         <td>
-                            <input type="text" name="art_title" value="{{old('art_title')}}">
+                            <input type="text" name="art_title" value="{{$item->art_title}}">
                             <span><i class="fa fa-exclamation-circle yellow"></i>文章标题必须填写</span>
                         </td>
                     </tr>
                     <tr>
                         <th><i class="require"></i>文章编辑：</th>
                         <td>
-                            <input type="text" class="lg" name="art_editor" value="{{old('art_editor')}}">
+                            <input type="text" class="lg" name="art_editor" value="{{$item->editor}}">
                         </td>
                     </tr>
  
                     <tr>
                         <th><i class="require"></i>文章缩略图：</th>
                         <td>
-                            <input type="text" class="lg" size="50" name="art_thumb" value="{{old('art_thumb')}}">
+                            <input type="text" class="lg" size="50" name="art_thumb" value="{{$item->art_thumb}}">
                             <input id="file_upload" name="art_thumb" type="file" multiple="true">
                             <script src="{{asset('uploadify/jquery.uploadify.min.js')}}" type="text/javascript"></script>
                             <link rel="stylesheet" type="text/css" href="{{asset('uploadify/uploadify.css')}}">
@@ -96,13 +99,13 @@
                     <tr>
                         <th><i class="require"></i>文章关键字：</th>
                         <td>
-                            <input type="text" class="lg" name="art_tag" value="{{old('art_tag')}}">
+                            <input type="text" class="lg" name="art_tag" value="{{$item->art_tag}}">
                         </td>
                     </tr>
                     <tr>
                         <th>文章描述：</th>
                         <td>
-                            <textarea name="art_description">{{old('art_description')}}</textarea>
+                            <textarea name="art_description">{{$item->art_description}}</textarea>
                         </td>
                     </tr>
                     
@@ -113,7 +116,7 @@
                             <script type="text/javascript" charset="utf-8" src="{{asset('extend/ueditor/ueditor.config.js')}}"></script>
                             <script type="text/javascript" charset="utf-8" src="{{asset('extend/ueditor/ueditor.all.min.js')}}"> </script>
                             <script type="text/javascript" charset="utf-8" src="{{asset('extend/ueditor/lang/zh-cn/zh-cn.js')}}"></script>
-                            <script id="editor" name="art_content" type="text/plain" style="width:800px;height:500px;"></script>
+                            <script id="editor" name="art_content" type="text/plain" style="width:800px;height:500px;">{!! $item->art_content !!}</script>
                             <script>
                                 var ue = UE.getEditor('editor');
                             </script>

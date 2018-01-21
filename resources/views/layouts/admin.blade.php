@@ -9,7 +9,7 @@
         <script type="text/javascript" src="{{asset('style/js/layer/layer.js')}}"></script>  
 </head>
 <body>
-    @yield('content');
+    @yield('content')
     
 </body>
 </html>
