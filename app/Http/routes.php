@@ -44,8 +44,11 @@ Route::group(['middleware'=>['admin.login']],function(){
     Route::resource('/admin/category','Admin\CategoryController');
     Route::resource('/admin/article','Admin\ArticleContorller');
     Route::resource('/admin/links','Admin\LinksController');
+    Route::resource('/admin/navs','Admin\NavsController');
 
     Route::post('/admin/cate/changeOrder','Admin\CategoryController@changeOrder');
+
+    Route::post('/admin/navs/changeOrder','Admin\NavsController@changeOrder');
 });
 
 

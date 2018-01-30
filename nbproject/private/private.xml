@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/phpStudy/WWW/laravel1/app/Http/Controllers/Controller.php</file>
-            <file>file:/F:/phpStudy/WWW/laravel1/app/Http/Controllers/Admin/ArticleContorller.php</file>
-            <file>file:/F:/phpStudy/WWW/laravel1/app/Http/Model/Category.php</file>
-            <file>file:/F:/phpStudy/WWW/laravel1/app/Http/routes.php</file>
             <file>file:/F:/phpStudy/WWW/laravel1/resources/views/layouts/admin.blade.php</file>
-            <file>file:/F:/phpStudy/WWW/laravel1/app/Http/Controllers/Admin/CategoryController.php</file>
+            <file>file:/F:/phpStudy/WWW/laravel1/app/Http/Controllers/Admin/NavsController.php</file>
             <file>file:/F:/phpStudy/WWW/laravel1/resources/views/admin/category/add.blade.php</file>
-            <file>file:/F:/phpStudy/WWW/laravel1/resources/views/admin/article/add.blade.php</file>
         </group>
     </open-files>
 </project-private>

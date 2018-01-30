@@ -119,6 +119,23 @@ CREATE TABLE `blog_migrations` (
 
 insert  into `blog_migrations`(`migration`,`batch`) values ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2018_01_07_053232_create_links_table',2);
 
+/*Table structure for table `blog_navs` */
+
+DROP TABLE IF EXISTS `blog_navs`;
+
+CREATE TABLE `blog_navs` (
+  `nav_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nav_name` varchar(50) NOT NULL COMMENT '导航名称',
+  `nav_alias` varchar(50) NOT NULL COMMENT '别称',
+  `nav_url` varchar(100) NOT NULL COMMENT '导航地址',
+  `nav_order` int(11) NOT NULL DEFAULT '0' COMMENT '导航排序',
+  PRIMARY KEY (`nav_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+/*Data for the table `blog_navs` */
+
+insert  into `blog_navs`(`nav_id`,`nav_name`,`nav_alias`,`nav_url`,`nav_order`) values (1,'新闻','news','www.baidu.com',3),(2,'论坛','lunlan','www.bbs.com',1),(3,'锦绣钱程','jinxqc','www.jinxqc.com',1);
+
 /*Table structure for table `blog_password_resets` */
 
 DROP TABLE IF EXISTS `blog_password_resets`;
