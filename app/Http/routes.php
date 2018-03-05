@@ -46,6 +46,8 @@ Route::group(['middleware'=>['admin.login']],function(){
     Route::resource('/admin/links','Admin\LinksController');
     Route::resource('/admin/navs','Admin\NavsController');
 
+    Route::resource('/admin/config','Admin\ConfigController');
+
     Route::post('/admin/cate/changeOrder','Admin\CategoryController@changeOrder');
 
     Route::post('/admin/navs/changeOrder','Admin\NavsController@changeOrder');
