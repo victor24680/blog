@@ -32,24 +32,24 @@ class ConfigController extends CommonController
             'conf_url'=>'required',
     	];
     	$message=[
-    		'conf_name.required'=>'配置项名称必需填写',
-    		'conf_alias.required'=>'配置项别名必需填写',
-    		'conf_url.required'=>'配置项地址必需填写',
+    		'conf_title.required'=>'网站标题必需填写',
+    		'conf_name.required'=>'变量名必需填写',
+    		'conf_content.required'=>'变量值必需填写',
     	];
     	$validator=Validator::make($data,$rules,$message);
     	if(!$validator->passes()){
             return redirect()->back()->withErrors($validator);
     	}
-    	$res=config::create($data);
+    	$res=Config::create($data);
     	if(!$res){
-    		return redirect()->back()->withErrors(['msg'=>'添加配置项失败']);
+    		return redirect()->back()->withErrors(['msg'=>'添加网站配置失败']);
     	}
     	return redirect('admin/config');
     }
 
     //修改配置项
     public function edit($conf_id){
-        $data=config::find($conf_id);
+        $data=Config::find($conf_id);
         return view('admin.config.edit',compact('data'));
     }
 
@@ -82,19 +82,20 @@ class ConfigController extends CommonController
         }
     }
 
+
     //删除单个配置项
     public function destroy($conf_id){
         $res=config::where(['conf_id'=>$conf_id])->delete();
         if($res){
-                return array('error'=>0);
+            return array('error'=>0);
         }else{
-                return array('error'=>1);
+            return array('error'=>1);
         }
     }
     
     public function changeOrder(Request $request){
-        $navInfos=$request->only(['conf_id','conf_order']);
-        $result=config::where(['conf_id'=>$navInfos['conf_id']])->update(['conf_order'=>$navInfos['conf_order']]);
+        $confInfos=$request->only(['conf_id','conf_order']);
+        $result=Config::where(['conf_id'=>$confInfos['conf_id']])->update(['conf_order'=>$confInfos['conf_order']]);
         if($result){
             return response()->json(['status'=>0,'msg'=>'排序成功']);
         }else{

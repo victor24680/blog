@@ -20,6 +20,4 @@ class Config extends Model
 
     */
 
-
-
 }

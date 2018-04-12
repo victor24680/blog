@@ -4,7 +4,7 @@
     <!--面包屑导航 开始-->
     <div class="crumb_warp">
         <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
-        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">导航页</a> &raquo; 添加导航
+        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">网站配置页</a> &raquo; 添加网站配置
     </div>
     <!--面包屑导航 结束-->
 
@@ -26,7 +26,7 @@
         </div>
         <div class="result_content">
             <div class="short_wrap">
-                <a href="#"><i class="fa fa-plus"></i>新增导航</a>
+                <a href="#"><i class="fa fa-plus"></i>新增网站配置</a>
             </div>
         </div>
     </div>
@@ -37,7 +37,6 @@
             {{csrf_field()}}
             <table class="add_tab">
                 <tbody>
-                    
                     <tr>
                         <th><i class="require">*</i>导航名称：</th>
                         <td>
@@ -45,6 +44,7 @@
                             <span><i class="fa fa-exclamation-circle yellow"></i>导航名称必须填写</span>
                         </td>
                     </tr>
+
                     <tr>
                         <th><i class="require"></i>导航别名：</th>
                         <td>
@@ -67,6 +67,7 @@
                             <input type="button" class="back" onclick="history.go(-1)" value="返回">
                         </td>
                     </tr>
+
                 </tbody>
             </table>
         </form>
