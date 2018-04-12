@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v10.42 
-MySQL - 5.5.47 : Database - laravel2
+MySQL - 5.5.53 : Database - laravelblog
 *********************************************************************
 */
 
@@ -12,9 +12,9 @@ MySQL - 5.5.47 : Database - laravel2
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`laravel2` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`laravelblog` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `laravel2`;
+USE `laravelblog`;
 
 /*Table structure for table `articles` */
 
@@ -89,6 +89,24 @@ CREATE TABLE `blog_category` (
 
 insert  into `blog_category`(`cate_id`,`cate_name`,`cate_title`,`cate_keywords`,`cate_description`,`cate_view`,`cate_order`,`cate_pid`) values (1,'新闻','收集国内外最知名的资讯',NULL,NULL,0,11,0),(2,'体育','发展体育事业，增强国民体质',NULL,NULL,0,50,0),(3,'娱乐','人人都有自己的娱乐圈',NULL,NULL,0,0,0),(4,'热点新闻','最新新闻事件_热点信息',NULL,NULL,0,10,1),(5,'军事新闻','最新新闻事件_热点新闻',NULL,NULL,0,12,1),(6,'体育彩票','体育彩票管理中心',NULL,NULL,0,0,2),(7,'乐视体育','乐视体育—-最专业的体育新闻',NULL,NULL,0,0,2),(8,'腾讯体育','腾讯体育--人气最旺的体育',NULL,NULL,0,0,2);
 
+/*Table structure for table `blog_config` */
+
+DROP TABLE IF EXISTS `blog_config`;
+
+CREATE TABLE `blog_config` (
+  `conf_id` int(10) NOT NULL AUTO_INCREMENT,
+  `conf_title` varchar(50) DEFAULT NULL COMMENT '标题',
+  `conf_name` varchar(50) DEFAULT NULL COMMENT '名称',
+  `conf_content` text COMMENT '内容',
+  `conf_order` int(10) DEFAULT NULL COMMENT '排序',
+  `conf_tips` varchar(255) DEFAULT NULL COMMENT '描述',
+  `field_type` varchar(50) DEFAULT NULL COMMENT '类型',
+  `field_value` varchar(255) DEFAULT NULL COMMENT '值',
+  PRIMARY KEY (`conf_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `blog_config` */
+
 /*Table structure for table `blog_links` */
 
 DROP TABLE IF EXISTS `blog_links`;
@@ -134,7 +152,7 @@ CREATE TABLE `blog_navs` (
 
 /*Data for the table `blog_navs` */
 
-insert  into `blog_navs`(`nav_id`,`nav_name`,`nav_alias`,`nav_url`,`nav_order`) values (1,'新闻','news','www.baidu.com',3),(2,'论坛','lunlan','www.bbs.com',1),(3,'锦绣钱程','jinxqc','www.jinxqc.com',1);
+insert  into `blog_navs`(`nav_id`,`nav_name`,`nav_alias`,`nav_url`,`nav_order`) values (1,'新闻','news','www.baidu.com',2),(2,'论坛','lunlan','www.bbs.com',1),(3,'锦绣钱程','jinxqc','www.jinxqc.com',5);
 
 /*Table structure for table `blog_password_resets` */
 
