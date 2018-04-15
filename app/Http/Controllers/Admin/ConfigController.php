@@ -22,19 +22,26 @@ class ConfigController extends CommonController
         return view('admin.config.add');
     }
 
+    //修改网站配置内容
+    public function changecontent(){
+        $input=Input::all();
+        dump($input);
+    }
+
+    public function show(){
+
+    }
+
     /*【添加配置项提交】*/
     public function store(){
-    	$data=Input::except('_token');
-
+    	$data=Input::except('_token');;
     	$rules=[
+            'conf_title'=>'required',
             'conf_name'=>'required',
-            'conf_alias'=>'required',
-            'conf_url'=>'required',
     	];
     	$message=[
     		'conf_title.required'=>'网站标题必需填写',
-    		'conf_name.required'=>'变量名必需填写',
-    		'conf_content.required'=>'变量值必需填写',
+    		'conf_name.required'=>'网站名必需填写',
     	];
     	$validator=Validator::make($data,$rules,$message);
     	if(!$validator->passes()){
@@ -44,27 +51,26 @@ class ConfigController extends CommonController
     	if(!$res){
     		return redirect()->back()->withErrors(['msg'=>'添加网站配置失败']);
     	}
-    	return redirect('admin/config');
+    	return redirect('admin/conf');
     }
 
     //修改配置项
     public function edit($conf_id){
-        $data=Config::find($conf_id);
-        return view('admin.config.edit',compact('data'));
+        $item=Config::find($conf_id);
+        return view('admin.config.edit',compact('item'));
     }
 
     //PUT提交
     public function update($conf_id){
+
     	$data=Input::except(['_token','_method']);
         $rules=[
+            'conf_title'=>'required',
             'conf_name'=>'required',
-            'conf_alias'=>'required',
-            'conf_url'=>'required',
         ];
         $message=[
-            'conf_name.required'=>'配置项名称必需填写',
-            'conf_alias.required'=>'配置项标题必需填写',
-            'conf_url.required'=>'配置项地址必需填写',
+            'conf_title.required'=>'网站标题称必需填写',
+            'conf_name.required'=>'网站配置必需填写',
         ];
         $validator=Validator::make($data,$rules,$message);
         if(!$validator->passes()){
@@ -76,7 +82,7 @@ class ConfigController extends CommonController
         }
         $res=config::where(['conf_id'=>$conf_id])->update($data);
         if($res){
-            return redirect('admin/config');
+            return redirect('admin/conf');
         }else{
             return redirect()->back()->withErrors(['msg'=>'数据修改成功']);
         }
