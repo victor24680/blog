@@ -103,9 +103,11 @@ CREATE TABLE `blog_config` (
   `field_type` varchar(50) DEFAULT NULL COMMENT '类型',
   `field_value` varchar(255) DEFAULT NULL COMMENT '值',
   PRIMARY KEY (`conf_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `blog_config` */
+
+insert  into `blog_config`(`conf_id`,`conf_title`,`conf_name`,`conf_content`,`conf_order`,`conf_tips`,`field_type`,`field_value`) values (1,'网站标题','web_title',NULL,1,'后盾网Blog统计','input',''),(2,'代码统计','web_count',NULL,2,'网站访问情况统计','textarea',''),(3,'网站状态统计','web_status',NULL,2,'网站开启状态','radio','1|开启,0|关闭');
 
 /*Table structure for table `blog_links` */
 
@@ -152,7 +154,7 @@ CREATE TABLE `blog_navs` (
 
 /*Data for the table `blog_navs` */
 
-insert  into `blog_navs`(`nav_id`,`nav_name`,`nav_alias`,`nav_url`,`nav_order`) values (1,'新闻','news','www.baidu.com',2),(2,'论坛','lunlan','www.bbs.com',1),(3,'锦绣钱程','jinxqc','www.jinxqc.com',5);
+insert  into `blog_navs`(`nav_id`,`nav_name`,`nav_alias`,`nav_url`,`nav_order`) values (1,'新闻','news','www.baidu.com',2),(2,'论坛','lunlan','www.bbs.com',3),(3,'锦绣钱程','jinxqc','www.jinxqc.com',5);
 
 /*Table structure for table `blog_password_resets` */
 
