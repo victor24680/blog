@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Model\Config;
 class ConfigController extends CommonController
 {
-	//导航管理【测试远程管理】
+	//配置管理【测试远程管理】
     public function index(){
         $data=Config::orderBy('conf_order','desc')->orderBy('conf_id','desc')->paginate(5);
         return view('admin.Config.index')->with('data',$data);
@@ -16,7 +16,7 @@ class ConfigController extends CommonController
 
     /**
      *@author:victor
-     *@desc:创建新的导航
+     *@desc:创建新的配置
      */
     public function create(){
         return view('admin.config.add');
@@ -47,7 +47,7 @@ class ConfigController extends CommonController
     	return redirect('admin/config');
     }
 
-    //修改导航
+    //修改配置
     public function edit($conf_id){
         $data=Config::find($conf_id);
         return view('admin.config.edit',compact('data'));

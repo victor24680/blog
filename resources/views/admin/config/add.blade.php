@@ -38,15 +38,15 @@
             <table class="add_tab">
                 <tbody>
                     <tr>
-                        <th><i class="require">*</i>导航名称：</th>
+                        <th><i class="require">*</i>配置标题：</th>
                         <td>
                             <input type="text" name="nav_name" value="{{old('nav_name')}}">
-                            <span><i class="fa fa-exclamation-circle yellow"></i>导航名称必须填写</span>
+                            <span><i class="fa fa-exclamation-circle yellow"></i>配置标题必须填写</span>
                         </td>
                     </tr>
 
                     <tr>
-                        <th><i class="require"></i>导航别名：</th>
+                        <th><i class="require"></i>配置名称：</th>
                         <td>
                             <input type="text" class="lg" name="nav_alias" value="{{old('nav_title')}}">
                         </td>
