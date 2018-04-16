@@ -5,12 +5,12 @@ use Illuminate\Http\Request;
 use Request as Input;
 use Validator;
 use App\Http\Controllers\Controller;
-use App\Http\Model\config;
+use App\Http\Model\Config;
 class ConfigController extends CommonController
 {
 	//配置管理【测试远程管理】
     public function index(){
-        $data=Config::orderBy('conf_order','desc')->orderBy('conf_id','desc')->paginate(5);
+        $data=Config::orderBy('conf_order','asc')->orderBy('conf_id','desc')->paginate(5);
         return view('admin.config.index')->with('data',$data);
     }
 
@@ -24,12 +24,37 @@ class ConfigController extends CommonController
 
     //修改网站配置内容
     public function changecontent(){
-        $input=Input::all();
-        dump($input);
+        $input=Input::except('_token');
+        $conf_content=$input['conf_content'];
+        foreach ($conf_content as $key =>$value){
+            if(empty($value) && $value!==0 && $value!=='0'){
+                return redirect()->back()->withErrors(["配置内容不能空"]);
+            }
+            $res=Config::find($key);
+            if(!$res){
+                return redirect()->back()->withErrors(["找不到ID号为".$key.'的记录']);
+            }
+            $res->conf_content=$value;
+            $res->save();
+        }
+        $this->putFile();
+        return redirect()->back()->withErrors("修改成功");
     }
 
     public function show(){
 
+    }
+
+    /**
+     * 修改配置项时-修改配置文件
+     */
+    public function putFile()
+    {
+        $config=Config::pluck("conf_content","conf_name")->all();
+        $array_export=var_export($config,true);
+        $path=base_path().'\config\web.php';
+        $str='<?php return '.$array_export.';?>';
+        file_put_contents($path,$str);
     }
 
     /*【添加配置项提交】*/
@@ -51,6 +76,7 @@ class ConfigController extends CommonController
     	if(!$res){
     		return redirect()->back()->withErrors(['msg'=>'添加网站配置失败']);
     	}
+        $this->putFile();
     	return redirect('admin/conf');
     }
 
@@ -62,7 +88,6 @@ class ConfigController extends CommonController
 
     //PUT提交
     public function update($conf_id){
-
     	$data=Input::except(['_token','_method']);
         $rules=[
             'conf_title'=>'required',
@@ -82,9 +107,10 @@ class ConfigController extends CommonController
         }
         $res=config::where(['conf_id'=>$conf_id])->update($data);
         if($res){
+            $this->putFile();
             return redirect('admin/conf');
         }else{
-            return redirect()->back()->withErrors(['msg'=>'数据修改成功']);
+            return redirect()->back()->withErrors(['msg'=>'数据修改失败']);
         }
     }
 

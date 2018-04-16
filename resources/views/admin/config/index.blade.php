@@ -23,6 +23,21 @@
         </div>
 
         <div class="result_wrap">
+            <div class="result_title">
+                @if(count($errors)>0)
+                    <div class="mark">
+                        @if(!is_object($errors))
+                            {{$errors}}
+                        @else
+                            @if(count($errors)>0)
+                                @foreach($errors->all() as $error)
+                                    <p>{{$error}}</p>
+                                @endforeach
+                            @endif
+                        @endif
+                    </div>
+                @endif
+            </div>
             <div class="result_content">
                  <form action="{{url('admin/conf/changecontent')}}" method="post" />
                     {{csrf_field()}}
@@ -47,23 +62,22 @@
                                 <td>{{$v->conf_name}}</td>
                                 <td style="width:500px;">
                                     @if($v->field_type=='input')
-                                        <input type="text" name="conf_content[{{$v->conf_id}}]" value="{{$v->content}}" style="width:500px;padding-left:10px;text-align: left;"/>
+                                        <input type="text" name="conf_content[{{$v->conf_id}}]" value="{{$v->conf_content}}" style="width:500px;padding-left:10px;text-align: left;"/>
                                     @elseif($v->field_type=='textarea')
-                                        <textarea name="conf_content[{{$v->conf_id}}]" rows="5" cols="4" style="width:500px;">{{$v->content}}</textarea>
+                                        <textarea name="conf_content[{{$v->conf_id}}]" rows="5" cols="4" style="width:500px;">{{$v->conf_content}}</textarea>
                                     @elseif($v->field_type=='radio')
                                         <input type="radio" name="conf_content[{{$v->conf_id}}]" 
-                                        @if($v->content===0)
+                                        @if($v->conf_content==0)
                                             checked="checked"
                                         @endif
                                         value="0"
                                          />-关闭&nbsp;
                                         <input type="radio" name="conf_content[{{$v->conf_id}}]" 
-                                        @if($v->content===1)
+                                        @if($v->conf_content==1)
                                             checked="checked"
                                         @endif
                                         value="1"
                                          />-开启
-
                                     @endif
                                 </td>
                                 <td>

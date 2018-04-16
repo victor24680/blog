@@ -39,11 +39,12 @@ Route::group(['middleware'=>['admin.login']],function(){
     Route::get('/admin/add','Admin\IndexController@add');
     Route::get('/admin/list','Admin\IndexController@lists');
     Route::get('/admin/tab','Admin\IndexController@tab');
-    Route::get('/admin/img','Admin\IndexController@img'); 
-    
+    Route::get('/admin/img','Admin\IndexController@img');
 
 
-    
+
+
+    Route::get('/admin/conf/putfile','Admin\ConfigController@putFile');
 
     Route::resource('/admin/category','Admin\CategoryController');
     Route::resource('/admin/article','Admin\ArticleContorller');
@@ -54,6 +55,7 @@ Route::group(['middleware'=>['admin.login']],function(){
     Route::post('/admin/cate/changeOrder','Admin\CategoryController@changeOrder');
     Route::post('/admin/navs/changeOrder','Admin\NavsController@changeOrder');
     Route::post('/admin/conf/changecontent','Admin\ConfigController@changecontent');
+
 
 });
 
