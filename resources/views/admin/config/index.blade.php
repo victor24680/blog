@@ -4,12 +4,11 @@
     <!--面包屑导航 开始-->
     <div class="crumb_warp">
         <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
-        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo;
+        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo;  网站配置
     </div>
     <!--面包屑导航 结束-->
 
     <!--搜索结果页面 列表 开始-->
-    <form action="#" method="post">
         <div class="result_wrap">
             <div class="result_title">
                 <h3>快捷操作</h3>
@@ -25,63 +24,62 @@
 
         <div class="result_wrap">
             <div class="result_content">
-                <table class="list_tab">
-                    <tr>
-                        <th class="tc" width="5%">排序</th>
-                        <th class="tc" width="5%">导航名称</th>
-                        <th>导航别名</th>
-                        <th>导航地址</th>
-                        <th>排序</th>
-                        <th>操作</th>
-                    </tr>
-
-                    @foreach($data as $v)
+                 <form action="{{url('admin/conf/changecontent')}}" method="post" />
+                    {{csrf_field()}}
+                    <table class="list_tab">
+                   
                         <tr>
-                            <td class="tc">
-                                <input type="text" onchange="changeOrder(this,{{$v->nav_id}})" value="{{$v->nav_order}}" />
-                            </td>
-                            <td class="tc">{{$v->nav_name}}</td>
-                            <td>{{$v->nav_alias}}</td>
-                            <td>{{$v->nav_url}}</td>
-                            <td>{{$v->nav_order}}</td>
-                            <td>
-                                <a href="{{url('admin/navs/'.$v->nav_id.'/edit')}}">修改</a>
-                                <a href="javascript:void(0)" onclick="promptDel({{$v->nav_id}})">删除</a>
-                            </td>
+                            <th class="tc" width="5%">排序</th>
+                            <th class="tc" width="5%">ID号</th>
+                            <th>标题</th>
+                            <th>名称</th>
+                            <th>内容</th>
+                            <th>操作</th>
                         </tr>
-                    @endforeach
-    
-                </table>
-                
 
-<!--            <div class="page_nav">
-                <div>
-                <a class="first" href="/wysls/index.php/Admin/Tag/index/p/1.html">第一页</a> 
-                <a class="prev" href="/wysls/index.php/Admin/Tag/index/p/7.html">上一页</a> 
-                <a class="num" href="/wysls/index.php/Admin/Tag/index/p/6.html">6</a>
-                <a class="num" href="/wysls/index.php/Admin/Tag/index/p/7.html">7</a>
-                <span class="current">8</span>
-                <a class="num" href="/wysls/index.php/Admin/Tag/index/p/9.html">9</a>
-                <a class="num" href="/wysls/index.php/Admin/Tag/index/p/10.html">10</a> 
-                <a class="next" href="/wysls/index.php/Admin/Tag/index/p/9.html">下一页</a> 
-                <a class="end" href="/wysls/index.php/Admin/Tag/index/p/11.html">最后一页</a> 
-                <span class="rows">11 条记录</span>
-                </div>
-            </div>-->
+                        @foreach($data as $v)
+                            <tr>
+                                <td class="tc">
+                                    <input type="text" onchange="changeOrder(this,{{$v->conf_id}})" value="{{$v->conf_order}}" />
+                                </td>
+                                <td>{{$v->conf_id}}</td>
+                                <td class="tc">{{$v->conf_title}}</td>
+                                <td>{{$v->conf_name}}</td>
+                                <td style="width:500px;">
+                                    @if($v->field_type=='input')
+                                        <input type="text" name="conf_content[{{$v->conf_id}}]" value="{{$v->content}}" style="width:500px;padding-left:10px;text-align: left;"/>
+                                    @elseif($v->field_type=='textarea')
+                                        <textarea name="conf_content[{{$v->conf_id}}]" rows="5" cols="4" style="width:500px;">{{$v->content}}</textarea>
+                                    @elseif($v->field_type=='radio')
+                                        <input type="radio" name="conf_content[{{$v->conf_id}}]" 
+                                        @if($v->content===0)
+                                            checked="checked"
+                                        @endif
+                                        value="0"
+                                         />-关闭&nbsp;
+                                        <input type="radio" name="conf_content[{{$v->conf_id}}]" 
+                                        @if($v->content===1)
+                                            checked="checked"
+                                        @endif
+                                        value="1"
+                                         />-开启
 
-
-
-<!--            <div class="page_list">
-                <ul>
-                    <li class="disabled"><a href="#">&laquo;</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
-            </div>-->
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{url('admin/conf/'.$v->conf_id.'/edit')}}">修改</a>
+                                    <a href="javascript:void(0)" onclick="promptDel({{$v->conf_id}})">删除</a>
+                                    
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+                    <div class="btn_group">
+                        <input type='submit' value="提交" />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type='button' class="back" value="返回" /> 
+                    </div>
+                </form>
             <div class="page_list">
                 {{$data->links()}}
             </div>
@@ -99,7 +97,7 @@
 <script>
     function changeOrder(obj,nav_id){
         var nav_order=$(obj).val();
-        $.post('{{url("admin/navs/changeOrder")}}',{'_token':'{{csrf_token()}}','nav_id':nav_id,'nav_order':nav_order},function(data){
+        $.post('{{url("admin/conf/changeOrder")}}',{'_token':'{{csrf_token()}}','conf_':conf_id,'conf_order':conf_order},function(data){
             if(data.status==0){
                 layer.alert('排序更新成功！');
             }else{
@@ -112,10 +110,10 @@
         layer.confirm('您确认要删除吗？', {
             btn: ['确认','取消'] //按钮
         }, function(){
-            $.post("{{url('admin/navs')}}/"+nav_id,{'nav_id':nav_id,'_token':'{{csrf_token()}}','_method':'delete'},function(data){
+            $.post("{{url('admin/conf')}}/"+nav_id,{'conf_id':conf_id,'_token':'{{csrf_token()}}','_method':'delete'},function(data){
                 if(data.error==0){
                     layer.msg('删除成功', {icon: 6});
-                    location.href="{{url('admin/navs')}}";
+                    location.href="{{url('admin/conf')}}";
                 }else{
                     layer.msg('删除失败', {icon: 5});
                 }

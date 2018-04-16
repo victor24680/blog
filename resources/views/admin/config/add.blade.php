@@ -33,33 +33,69 @@
     <!--结果集标题与导航组件 结束-->
     
     <div class="result_wrap">
-        <form action="{{url('admin/navs')}}" method="post">
+        <form action="{{url('admin/conf')}}" method="post">
             {{csrf_field()}}
             <table class="add_tab">
                 <tbody>
                     <tr>
+<<<<<<< HEAD
                         <th><i class="require">*</i>配置标题：</th>
                         <td>
                             <input type="text" name="nav_name" value="{{old('nav_name')}}">
                             <span><i class="fa fa-exclamation-circle yellow"></i>配置标题必须填写</span>
+=======
+                        <th><i class="require">*</i>标题</th>
+                        <td>
+                            <input type="text" name="conf_title" value="{{old('conf_title')}}">
+                            <span><i class="fa fa-exclamation-circle yellow"></i>标题必须填写</span>
+>>>>>>> origin/master
                         </td>
                     </tr>
 
                     <tr>
+<<<<<<< HEAD
                         <th><i class="require"></i>配置名称：</th>
+=======
+                        <th><i class="require"></i>名称：</th>
+>>>>>>> origin/master
                         <td>
-                            <input type="text" class="lg" name="nav_alias" value="{{old('nav_title')}}">
+                            <input type="text" class="lg" name="conf_name" value="{{old('conf_name')}}">
                         </td>
                     </tr>
  
     
                     <tr>
-                        <th><i class="require"></i>导航地址：</th>
+                        <th><i class="require"></i>类型：</th>
                         <td>
-                            <input type="text" class="lg" name="nav_url" value="{{old('nav_url')}}">
+                            <input type="radio" class="field_type" name="field_type" value="input"  checked="checked" />-input &nbsp;&nbsp;
+                            <input type="radio" class="field_type" name="field_type" value="textarea" />-textarea&nbsp;&nbsp;
+                            <input type="radio" class="field_type" name="field_type" value="radio" />-radio&nbsp;&nbsp;
                         </td>
                     </tr>
                     
+
+                    <tr class="hide_field_value" style="display: none;">
+                        <th><i class="require"></i>类型值：</th>
+                        <td>
+                            <input type="text" class="field_value" name="field_value" value="{{old('field_value')}}">
+                            <span><i class="fa fa-exclamation-circle yellow"></i>类型值只有在在radio的情况下才需要配置，格式1|开启，0|关闭</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th><i class="require"></i>排序：</th>
+                        <td>
+                            <input type="text" class="conf_order" name="conf_order" value="{{old('conf_order')}}">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th><i class="require"></i>说明：</th>
+                        <td>
+                            <textarea name="conf_tips">{{old('conf_tips')}}</textarea>
+                        </td>
+                    </tr>
+
                     <tr>
                         <th></th>
                         <td>
@@ -72,5 +108,18 @@
             </table>
         </form>
     </div>
+<script type="text/javascript">
+    
+    $(function(){
+        $('.field_type').click(function(){
+            var value=$('.field_type:checked').val();
+            if(value==='radio'){
+                $('.hide_field_value').show();
+            }else{
+                $('.hide_field_value').hide();
+            }
+        })
+    })
 
+</script>
 @endsection

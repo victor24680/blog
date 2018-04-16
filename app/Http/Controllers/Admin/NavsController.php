@@ -6,7 +6,7 @@ use Request as Input;
 use Validator;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Navs;
-class navsController extends CommonController
+class NavsController extends CommonController
 {
 	//导航管理【测试远程管理】
     public function index(){
