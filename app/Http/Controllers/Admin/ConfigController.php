@@ -44,16 +44,17 @@ class ConfigController extends CommonController
     public function show(){
 
     }
-
+    
     /**
      * 修改配置项时-修改配置文件
      */
-    public function putFile()
+    public function inputFile()
     {
         $config=Config::pluck("conf_content","conf_name")->all();
         $array_export=var_export($config,true);
+        dump($array_export);
         $path=base_path().'\config\web.php';
-        $str='<?php return '.$array_export.';?>';
+        $str='<?php '."\r\n".'return '.$array_export.';'."\r\n".'?>';
         file_put_contents($path,$str);
     }
 
@@ -65,8 +66,8 @@ class ConfigController extends CommonController
             'conf_name'=>'required',
     	];
     	$message=[
-    		'conf_title.required'=>'网站标题必需填写',
-    		'conf_name.required'=>'网站名必需填写',
+            'conf_title.required'=>'网站标题必需填写',
+            'conf_name.required'=>'网站名必需填写',
     	];
     	$validator=Validator::make($data,$rules,$message);
     	if(!$validator->passes()){
@@ -74,7 +75,7 @@ class ConfigController extends CommonController
     	}
     	$res=Config::create($data);
     	if(!$res){
-    		return redirect()->back()->withErrors(['msg'=>'添加网站配置失败']);
+            return redirect()->back()->withErrors(['msg'=>'添加网站配置失败']);
     	}
         $this->putFile();
     	return redirect('admin/conf');

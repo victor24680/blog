@@ -11,13 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware',['web']],function(){
+    Route::get('/','Home\IndexController@index');
+    Route::get('/artlist','Home\IndexController@lists');
+    Route::get('/detail','Home\IndexController@detail');
 });
 
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
+//Route::get('/home','Home\IndexController@index');
+//Route::auth();
+//Route::get('/home', 'HomeController@index');
 
 
 //定向到文件
@@ -44,8 +46,9 @@ Route::group(['middleware'=>['admin.login']],function(){
 
 
 
-    Route::get('/admin/conf/putfile','Admin\ConfigController@putFile');
+    Route::get('/admin/config/inputFile','Admin\ConfigController@inputFile');
 
+    
     Route::resource('/admin/category','Admin\CategoryController');
     Route::resource('/admin/article','Admin\ArticleContorller');
     Route::resource('/admin/links','Admin\LinksController');
