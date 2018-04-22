@@ -5,3 +5,4 @@ Homestead.json
 /nbproject
 /.env
 /config/databases.php
+/.idea

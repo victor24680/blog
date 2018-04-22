@@ -55,6 +55,7 @@ Route::group(['middleware'=>['admin.login']],function(){
     Route::resource('/admin/navs','Admin\NavsController');
     Route::resource('/admin/conf','Admin\ConfigController');
 
+    Route::post('/admin/article/changeOrder','Admin\ArticleContorller@changeOrder');
     Route::post('/admin/cate/changeOrder','Admin\CategoryController@changeOrder');
     Route::post('/admin/navs/changeOrder','Admin\NavsController@changeOrder');
     Route::post('/admin/conf/changecontent','Admin\ConfigController@changecontent');

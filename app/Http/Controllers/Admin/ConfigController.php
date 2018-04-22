@@ -41,7 +41,7 @@ class ConfigController extends CommonController
         return redirect()->back()->withErrors("修改成功");
     }
 
-    public function show(){
+        public function show(){
 
     }
     
@@ -52,7 +52,6 @@ class ConfigController extends CommonController
     {
         $config=Config::pluck("conf_content","conf_name")->all();
         $array_export=var_export($config,true);
-        dump($array_export);
         $path=base_path().'\config\web.php';
         $str='<?php '."\r\n".'return '.$array_export.';'."\r\n".'?>';
         file_put_contents($path,$str);

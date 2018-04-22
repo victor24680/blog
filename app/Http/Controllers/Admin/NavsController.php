@@ -10,7 +10,7 @@ class NavsController extends CommonController
 {
 	//导航管理【测试远程管理】
     public function index(){
-        $data=Navs::orderBy('nav_order','desc')->orderBy('nav_id','desc')->paginate(5);
+        $data=Navs::orderBy('nav_order','desc')->orderBy('nav_id','asc')->paginate(5);
         return view('admin.navs.index')->with('data',$data);
     }
 

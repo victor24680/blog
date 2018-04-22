@@ -38,7 +38,7 @@
                     @foreach($data as $v)
                         <tr>
                             <td class="tc">
-                                <input type="text" onchange="changeOrder(this,{{$v->art_id}})" value="{{$v->art_id}}">
+                                <input type="text" onchange="changeOrder(this,{{$v->art_id}})" value="{{$v->art_order}}">
                             </td>
                             <td class="tc">{{$v->art_title}}</td>
                             <td>
@@ -99,13 +99,13 @@
 </style>
 
 <script>
-    function changeOrder(obj,cate_id){
-        var cate_order=$(obj).val();
-        $.post('{{url("admin/cate/changeOrder")}}',{'_token':'{{csrf_token()}}','cate_id':cate_id,'cate_order':cate_order},function(data){
+    function changeOrder(obj,art_id){
+        var art_order=$(obj).val();
+        $.post('{{url("admin/article/changeOrder")}}',{'_token':'{{csrf_token()}}','art_id':art_id,'art_order':art_order},function(data){
             if(data.status==0){
-                layer.alert('排序更新成功！');
+                layer.alert('文章排序更新成功！');
             }else{
-                layer.alert('排序更新失败');
+                layer.alert('文章排序更新失败');
             }
         });
     }

@@ -9,7 +9,7 @@ class ArticleContorller extends CommonController
 {
     //文章列表页；
     public function index(){
-        $data=Article::orderBy('art_id','desc')->paginate(1);
+        $data=Article::orderBy('art_order','desc')->orderBy('art_id','desc')->paginate(5);
         return view('admin.article.index')->with('data',$data);
     }
     //get|head 添加分类/img/123.png
@@ -91,5 +91,25 @@ class ArticleContorller extends CommonController
         }else{
             return ['error'=>1];
         }
+    }
+
+    public function changeOrder()
+    {//修改提交测试
+        $input= Input::all();
+        $article=  Article::find($input['art_id']);
+        $article->art_order=$input['art_order'];
+        $re=$article->update();
+        if($re){
+            $data=[
+                'status'=>0,
+                'msg'=>'文章排序更新成功',
+            ];
+        }else{
+            $data=[
+                'status'=>1,
+                'msg'=>'文章排序更新失败，请稍后再试',
+            ];
+        }
+        return $data;
     }
 }
