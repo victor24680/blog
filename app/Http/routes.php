@@ -14,7 +14,7 @@
 Route::group(['middleware',['web']],function(){
     Route::get('/','Home\IndexController@index');
     Route::get('/artlist','Home\IndexController@lists');
-    Route::get('/detail','Home\IndexController@detail');
+    Route::get('/detail','Home\IndexController@detail')->name('detail');
 });
 
 //Route::get('/home','Home\IndexController@index');
