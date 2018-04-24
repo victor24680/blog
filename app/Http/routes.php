@@ -31,10 +31,10 @@ Route::post('/admin/sublogin','Admin\LogRegister@sublogin');
 Route::get('/admin/code','Admin\LogRegister@code');
 Route::get('/admin/encryptcode','Admin\LogRegister@encryptcode');
 
+Route::post('/uploady/upload','Admin\UploadyController@upload')->name('upload');
+
 Route::group(['middleware'=>['admin.login']],function(){
     Route::any('/admin/pass','Admin\LogRegisterController@pass');
-    
-    Route::any('/admin/upload','Admin\CommonController@upload');
     
     Route::get('/admin/index','Admin\IndexController@index');
     Route::get('/admin/info','Admin\IndexController@info');
@@ -43,12 +43,8 @@ Route::group(['middleware'=>['admin.login']],function(){
     Route::get('/admin/tab','Admin\IndexController@tab');
     Route::get('/admin/img','Admin\IndexController@img');
 
-
-
-
     Route::get('/admin/config/inputFile','Admin\ConfigController@inputFile');
 
-    
     Route::resource('/admin/category','Admin\CategoryController');
     Route::resource('/admin/article','Admin\ArticleContorller');
     Route::resource('/admin/links','Admin\LinksController');

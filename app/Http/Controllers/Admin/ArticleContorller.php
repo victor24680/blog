@@ -7,6 +7,7 @@ use Request as Input;
 use Validator;
 class ArticleContorller extends CommonController
 {
+    //http://www.layui.com/demo/upload.html[前端框架]
     //文章列表页；
     public function index(){
         $data=Article::orderBy('art_order','desc')->orderBy('art_id','desc')->paginate(5);
@@ -47,13 +48,12 @@ class ArticleContorller extends CommonController
     public function edit($art_id){
         $item=Article::find($art_id);
         $data=(new Category)->tree();
-        //dd($item);
         return view('admin.article.edit',compact('item','data'));
     } 
     
-    //更新文章
+    //更新文章[修改文章]
     public function update($art_id){
-        $input=Input::except(['_method','_token']);
+        $input=Input::except(['_method','_token','fileImage']);
         $rules=[
             'art_title'=>'required',
             'art_content'=>'required',

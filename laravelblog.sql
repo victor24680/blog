@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: laravelblog
 Target Host: localhost
 Target Database: laravelblog
-Date: 2018/4/22 ������ ���� 11:23:51
+Date: 2018/4/25 ������ ���� 12:35:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -151,7 +151,7 @@ CREATE TABLE `migrations` (
 -- ----------------------------
 INSERT INTO `articles` VALUES ('1', '', '', '', '0000-00-00 00:00:00');
 INSERT INTO `blog_admin` VALUES ('1', 'admin', 'eyJpdiI6IjVaQTlIMG1QcFdtMm5hVjdsbDdSTmc9PSIsInZhbHVlIjoiR0l6U0ExOFcrRmFFYXFvT2lGMzltUT09IiwibWFjIjoiYTJhNDdkMjJmZjMwMzZiZTU2MGNkNTY4YmQzMWVlYzg3Mzg2Y2RmOGJmOGYzNTE1ZjE3OWVmYTYwNmI3MTYwYyJ9');
-INSERT INTO `blog_article` VALUES ('3', '分手', '分手,大学', '进一好友空间，再一次看到她置顶的那一篇《他和她的故事》爱情在他俩的生活中经历了不少分分合合，但最后俩人还是走在了一起。当今天再一次阅读的时候，我没有第一次那么感性，我注重他们俩曲折的过程，其中出现过第三者...', '/img/123.jpg', '<ul class=\"infos list-paddingleft-2\" style=\"list-style-type: none;\"><p style=\"margin-top: 0px; margin-bottom: 20px; padding: 0px;\">进一好友空间，再一次看到她置顶的那一篇《他和她的故事》爱情在他俩的生活中经历了不少分分合合，但最后俩人还是走在了一起。当今天再一次阅读的时候，我没有第一次那么感性，我注重他们俩曲折的过程，其中出现过第三者...</p><p style=\"margin-top: 0px; margin-bottom: 20px; padding: 0px;\">如果我是她，对于他当初的脚踏两只船、尽管仍然说爱但亦然离开而选择别人，我很肯定我是无法原谅他的，也许你会说是因为我不是真正爱他吧，我也不知道，这是不是因为爱得不够深，不能包容他的过错...我是很小气的人，就像很多人说的那样，一年365天，你364天对她好，只要有一天对她不好，她也会在n天也许n年后提出来，你哪天对我不好。</p></ul><p><br/></p>', '1524403268', 'victor', '0', '10', '4');
+INSERT INTO `blog_article` VALUES ('3', '分手', '分手,大学', '进一好友空间，再一次看到她置顶的那一篇《他和她的故事》爱情在他俩的生活中经历了不少分分合合，但最后俩人还是走在了一起。当今天再一次阅读的时候，我没有第一次那么感性，我注重他们俩曲折的过程，其中出现过第三者...', '/uploads/20180424163425730.JPG', '<ul class=\"infos list-paddingleft-2\" style=\"list-style-type: none;\"><p style=\"margin-top: 0px; margin-bottom: 20px; padding: 0px;\">进一好友空间，再一次看到她置顶的那一篇《他和她的故事》爱情在他俩的生活中经历了不少分分合合，但最后俩人还是走在了一起。当今天再一次阅读的时候，我没有第一次那么感性，我注重他们俩曲折的过程，其中出现过第三者...</p><p style=\"margin-top: 0px; margin-bottom: 20px; padding: 0px;\">如果我是她，对于他当初的脚踏两只船、尽管仍然说爱但亦然离开而选择别人，我很肯定我是无法原谅他的，也许你会说是因为我不是真正爱他吧，我也不知道，这是不是因为爱得不够深，不能包容他的过错...我是很小气的人，就像很多人说的那样，一年365天，你364天对她好，只要有一天对她不好，她也会在n天也许n年后提出来，你哪天对我不好。</p></ul><p><br/></p>', '1524403268', 'victor', '0', '10', '4');
 INSERT INTO `blog_article` VALUES ('4', '大学', '代码,f分手', '大学时跟我分分合合的男朋友，却是这么一个爱犯错的人。跟他交往，会有意无意的伤到我自尊，至今我也那么认为那伤害了我的自尊。在我骨子里有一种骄傲和很强的自尊，而他却偏偏伤了一次又一次。他的朋友都说我小气，我至今也觉得如果我不小气，那就是我傻！', '/img/123.jpg', '<ul class=\"infos list-paddingleft-2\" style=\"list-style-type: none;\"><p style=\"margin-top: 0px; margin-bottom: 20px; padding: 0px;\">大学时跟我分分合合的男朋友，却是这么一个爱犯错的人。跟他交往，会有意无意的伤到我自尊，至今我也那么认为那伤害了我的自尊。在我骨子里有一种骄傲和很强的自尊，而他却偏偏伤了一次又一次。他的朋友都说我小气，我至今也觉得如果我不小气，那就是我傻！</p><p style=\"margin-top: 0px; margin-bottom: 20px; padding: 0px;\">我认为大学时的恋爱，是毕业前进入社会的一次恋爱实习。参杂了很多的疑问和抉择。就像工作，从销售到文员到编辑到技术员，最后才知道什么工作适合自己。找一个人陪你恋爱实习，也许很简单，也许很难。</p><p style=\"margin-top: 0px; margin-bottom: 20px; padding: 0px;\">这么多年过去了，当初分手都会舍不得那段4年的感情，后来也是时间煮了这段记忆。现在我们各自有了各自的生活，他也找到了他心仪的女孩，我能感觉出他们俩很相爱，当初最后一次分手的过渡时间，无论有多么的不舍与难熬，现在看看都是正确的</p></ul><pre class=\"brush:php;toolbar:false\">$a=1;var_dump($a);</pre><p><br/></p>', '1524403387', 'victor', '0', '0', '4');
 INSERT INTO `blog_article` VALUES ('5', '分手第三篇', '分手,大学', '为何我会毅然放弃，因为在我心里，那些过去的伤，那些不好的记忆永远都抹不去，我无法面对，哪怕是当初妥协了，我想最后我也一定会再一次选择放弃....', '/img/123.jpg', '<ul class=\"infos list-paddingleft-2\" style=\"list-style-type: none;\"><p style=\"margin-top: 0px; margin-bottom: 20px; padding: 0px;\">为何我会毅然放弃，因为在我心里，那些过去的伤，那些不好的记忆永远都抹不去，我无法面对，哪怕是当初妥协了，我想最后我也一定会再一次选择放弃....</p><p style=\"margin-top: 0px; margin-bottom: 20px; padding: 0px;\">我觉得爱情也可以重新来过，只是换换主角罢了...</p></ul><p><br/></p>', '1524403476', 'victor', '0', '0', '3');
 INSERT INTO `blog_category` VALUES ('1', '新闻', '收集国内外最知名的资讯', null, null, '0', '11', '0');
@@ -165,7 +165,7 @@ INSERT INTO `blog_category` VALUES ('8', '腾讯体育', '腾讯体育--人气�
 INSERT INTO `blog_config` VALUES ('1', '网站标题', 'web_title', '后盾网Blog统计-统计代码', '1', '网站大众化标题', 'input', '');
 INSERT INTO `blog_config` VALUES ('2', '代码统计', 'web_count', 'http://www.houduwang.com', '3', '网站访问情况', 'textarea', '');
 INSERT INTO `blog_config` VALUES ('3', '网站状态', 'web_status', '0', '2', '网站开启状态', 'radio', '1|开启,0|关闭');
-INSERT INTO `blog_links` VALUES ('2', '锦绣钱程', '钱程无限11', 'www.jinxqc.com', '0');
+INSERT INTO `blog_links` VALUES ('2', '锦绣钱程', '钱程无限11', 'http://www.jinxqc.com', '0');
 INSERT INTO `blog_links` VALUES ('3', '锦绣钱程', '锦绣钱程', 'http://www.jinxqc.com', '0');
 INSERT INTO `blog_links` VALUES ('4', '百度收藏', '百度收藏页', 'http://www.baidu.com', '0');
 INSERT INTO `blog_migrations` VALUES ('2014_10_12_000000_create_users_table', '1');

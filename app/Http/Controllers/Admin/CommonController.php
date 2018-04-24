@@ -18,17 +18,8 @@ class CommonController extends Controller
             return true;
         }
     }
-    
-    //上传图片
-    public function upload(){
-        $file=Input::file('Filedata');
-        if($file->isValid()){
-            $realPath=$file->getRealPath();//临时文件名的绝对路径
-            $entension=$file->getClientOriginalExtension();//上传文件的后缀
-            $newName=date('YmdHis').mt_rand(100,999).'.'.$entension;//app_path()
-            $path=$file->move(base_path.'/uploads',$newName);
-        }
-    }
+
+
 }
 
 

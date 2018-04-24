@@ -3,8 +3,7 @@
 @section('content')
     <!--面包屑导航 开始-->
     <div class="crumb_warp">
-        <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
-        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">文章页</a> &raquo; 添加文章
+        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">文章页</a> &raquo; 修改文章
     </div>
     <!--面包屑导航 结束-->
 
@@ -26,9 +25,9 @@
         </div>
         <div class="result_content">
             <div class="short_wrap">
-                <a href="#"><i class="fa fa-plus"></i>新增文章</a>
-                <a href="#"><i class="fa fa-recycle"></i>批量删除</a>
-                <a href="#"><i class="fa fa-refresh"></i>更新排序</a>
+                <a href="{{route('admin.article.create')}}" target="_blank"><i class="fa fa-plus"></i>新增文章</a>
+                <a href="{{url('admin/article')}}" target="_blank"><i class="fa fa-recycle"></i>批量删除</a>
+                <a href="{{url('admin/article')}}" target="_blank"><i class="fa fa-refresh"></i>更新排序</a>
             </div>
         </div>
     </div>
@@ -63,39 +62,24 @@
                     <tr>
                         <th><i class="require"></i>文章编辑：</th>
                         <td>
-                            <input type="text" class="lg" name="art_editor" value="{{$item->editor}}">
+                            <input type="text" class="lg" name="art_editor" value="{{$item->art_editor}}">
                         </td>
                     </tr>
  
                     <tr>
                         <th><i class="require"></i>文章缩略图：</th>
                         <td>
-                            <input type="text" class="lg" size="50" name="art_thumb" value="{{$item->art_thumb}}">
-                            <input id="file_upload" name="art_thumb" type="file" multiple="true">
-                            <script src="{{asset('uploadify/jquery.uploadify.min.js')}}" type="text/javascript"></script>
-                            <link rel="stylesheet" type="text/css" href="{{asset('uploadify/uploadify.css')}}">
-                            <script type="text/javascript">
-                                <?php $timestamp = time();?>
-                                $(function() {
-                                    $('#file_upload').uploadify({
-                                        'buttonText' : '上传图片',
-                                        'formData'     : {
-                                            'timestamp' : '<?php echo $timestamp;?>',
-                                            '_token'     : '{{csrf_token()}}'
-                                        },
-                                        'swf'      : "{{asset('uploadify/uploadify.swf')}}",
-                                        'uploader' : "{{url('/admin/upload')}}",
-                                    });
-                                });
-                            </script>
-                            <style>
-                                .uploadify{display:inline-block;}
-                                .uploadify-button{border:none;border-radius:5px;margin-top:8px;}
-                                table.add_tab tr td span.uploadify-button-text{color:white;margin:0;}
-                                .uploadify-button-text{color:white;}
-                            </style>
+                            <input type="text" class="lg" id="slImg" size="50" name="art_thumb" value="{{$item->art_thumb}}">
+                            <button type="button" class="layui-btn" id="test1">
+                                <i class="layui-icon">&#xe67c;</i>上传图片
+                            </button>
+                            <div class="layui-upload-list">
+                                <img class="layui-upload-img" id="demo1" style="width:100px;height:100px;">
+                                <p id="demoText"></p>
+                            </div>
                         </td>
                     </tr>
+
                     <tr>
                         <th><i class="require"></i>文章关键字：</th>
                         <td>
@@ -139,5 +123,37 @@
             </table>
         </form>
     </div>
-
+    <script>
+        layui.use('upload',function(){
+            var upload=layui.upload;
+            var uploadInst=upload.render({
+                elem:'#test1',
+                url:"{{route('upload')}}",
+                method:'post',
+                accept:'images',
+                field:'fileImage',
+                data:{
+                    "_token":"{{csrf_token()}}"
+                },
+                before:function(obj){
+                    obj.preview(function(index,file,result){
+                        $('#demo1').attr('src',result);
+                    });
+                },
+                done: function(res){
+                    //如果上传失败
+                    $('#slImg').val(res.data.no_http_src);
+                    //上传成功
+                },
+                error: function(){
+                    //演示失败状态，并实现重传
+                    var demoText = $('#demoText');
+                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                    demoText.find('.demo-reload').on('click', function(){
+                        uploadInst.upload();
+                    });
+                }
+            });
+        });
+    </script>
 @endsection
