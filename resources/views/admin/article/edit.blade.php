@@ -74,7 +74,7 @@
                                 <i class="layui-icon">&#xe67c;</i>上传图片
                             </button>
                             <div class="layui-upload-list">
-                                <img class="layui-upload-img" id="demo1" style="width:100px;height:100px;">
+                                <img src="{{$item->art_thumb}}"class="layui-upload-img" id="demo1" style="width:100px;height:100px;">
                                 <p id="demoText"></p>
                             </div>
                         </td>

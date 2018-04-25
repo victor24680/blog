@@ -17,7 +17,7 @@ class UploadyController extends Controller
         $path=$file->move(base_path().'/public/uploads',$newName);
         $data=[
             'code'=>0,
-            'msg'=>'长传成功',
+            'msg'=>'上传成功',
             'data'=>[
                 'src'=>'http://'.$_SERVER['HTTP_HOST'].'/uploads/'.$newName,
                 'no_http_src'=>'/uploads/'.$newName,

@@ -54,7 +54,12 @@ class IndexController extends CommonController
     
     public function lists()
     {
-        return view('home.list');
+        //文章列表
+        $articleList=Article::orderBy('art_order','desc')->orderBy('art_time','desc')->paginate(2);
+        foreach($articleList as $key => $value){
+            $value->art_description=str_limit($value->art_description,200,'. . . . . .');
+        }
+        return view('home.list')->with('articleList',$articleList);
     }
     
     public function detail()
