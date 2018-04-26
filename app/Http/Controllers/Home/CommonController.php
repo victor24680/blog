@@ -13,6 +13,21 @@ class CommonController extends Controller
     public function __construct()
     {
         $navlist=Navs::orderBy('nav_order','desc')->orderBy('nav_id','asc')->get();
-        View::share('navlist',$navlist);
+
+        //点击最高的篇文章
+        $viewArticleList=$this->viewArticle();
+        //最新发布的八篇文章
+        $newArticleList=$this->newsArticle();
+        //友情链接
+        $linkList=$this->linkList();
+
+        $data=[
+            'navlist'=>$navlist,
+            'newArticleList'=>$newArticleList,
+            'viewArticleList'=>$viewArticleList,
+            'linkList'=>$linkList,
+        ];
+        View::share($data);
+
     }
 }

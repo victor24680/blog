@@ -17,8 +17,7 @@ class IndexController extends CommonController
         //最新发布的八篇文章
         $newArticleList=$this->newsArticle();
         
-        //友情链接
-        $linkList=$this->linkList();
+
 
         //文章列表
         $articleList=Article::orderBy('art_order','desc')->orderBy('art_time','desc')->paginate(10);
@@ -27,7 +26,7 @@ class IndexController extends CommonController
         }
 
         //多种传值方式
-        return view('home.index',['articleList'=>$articleList],compact('viewArticleList','linkList'))->with('newArticleList',$newArticleList);
+        return view('home.index',['articleList'=>$articleList]);
     }
 
     //最新的八篇文章
@@ -40,6 +39,7 @@ class IndexController extends CommonController
     //最新的八篇文章
     public function newsArticle()
     {
+
         $list=Article::orderBy('art_time','desc')->take(5)->get();
         return $list;
     }
@@ -64,6 +64,7 @@ class IndexController extends CommonController
     
     public function detail()
     {
+
         $idInfos=Request::get('id');
         $data=Article::find($idInfos);
         if(!$data){
