@@ -45,7 +45,9 @@
         <span>个人博客：[<a href="/">程序人生</a>]</span>
       </p>
     @endforeach
-
+    <div class="page">
+       {{$articleList->links()}}
+    </div>
   </div>
 
 
@@ -75,9 +77,8 @@
         <p>友情<span>链接</span></p>
     </h3>
     @include('layouts.linkarticle')
-
     </div>
-    </aside>
+  </aside>
 </article>
 <footer>
   <p>Design by 后盾网 <a href="http://www.miitbeian.gov.cn/" target="_blank">http://www.houdunwang.com</a> <a href="/">网站统计</a></p>

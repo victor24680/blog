@@ -16,7 +16,7 @@
             <!--快捷导航 开始-->
             <div class="result_content">
                 <div class="short_wrap">
-                    <a href="{{url('admin/navs/create')}}"><i class="fa fa-plus"></i>添加网站配置</a>
+                    <a href="{{url('admin/conf/create')}}"><i class="fa fa-plus"></i>添加网站配置</a>
                 </div>
             </div>
             <!--快捷导航 结束-->
