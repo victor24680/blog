@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>后盾个人博客—一个站在web前段设计之路的女技术员个人博客网站</title>
+<title>{{$field->title}}—{{Config::get('web.web_title')}}</title>
 <meta name="keywords" content="个人博客,后盾个人博客,个人博客模板,后盾" />
 <meta name="description" content="后盾个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
 <link href="{{asset('home/css/base.css')}}" rel="stylesheet">

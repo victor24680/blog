@@ -16,10 +16,14 @@ class CommonController extends Controller
 
         //点击最高的篇文章
         $viewArticleList=$this->viewArticle();
+
         //最新发布的八篇文章
         $newArticleList=$this->newsArticle();
+
         //友情链接
         $linkList=$this->linkList();
+
+        //文章标题
 
         $data=[
             'navlist'=>$navlist,
@@ -28,6 +32,5 @@ class CommonController extends Controller
             'linkList'=>$linkList,
         ];
         View::share($data);
-
     }
 }
