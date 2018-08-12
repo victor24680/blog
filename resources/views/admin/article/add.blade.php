@@ -64,35 +64,20 @@
                         </td>
                     </tr>
  
-                    <tr>
+                   <tr>
                         <th><i class="require"></i>文章缩略图：</th>
                         <td>
-                            <input type="text" class="lg" size="50" name="art_thumb" value="{{old('art_thumb')}}">
-                            <input id="file_upload" name="art_thumb" type="file" multiple="true">
-                            <script src="{{asset('uploadify/jquery.uploadify.min.js')}}" type="text/javascript"></script>
-                            <link rel="stylesheet" type="text/css" href="{{asset('uploadify/uploadify.css')}}">
-                            <script type="text/javascript">
-                                <?php $timestamp = time();?>
-                                $(function() {
-                                    $('#file_upload').uploadify({
-                                        'buttonText' : '上传图片',
-                                        'formData'     : {
-                                            'timestamp' : '<?php echo $timestamp;?>',
-                                            '_token'     : '{{csrf_token()}}'
-                                        },
-                                        'swf'      : "{{asset('uploadify/uploadify.swf')}}",
-                                        'uploader' : "{{url('/admin/upload')}}",
-                                    });
-                                });
-                            </script>
-                            <style>
-                                .uploadify{display:inline-block;}
-                                .uploadify-button{border:none;border-radius:5px;margin-top:8px;}
-                                table.add_tab tr td span.uploadify-button-text{color:white;margin:0;}
-                                .uploadify-button-text{color:white;}
-                            </style>
+                            <input type="text" class="lg" id="slImg" size="50" name="art_thumb" value="{{old('art_thumb')}}">
+                            <button type="button" class="layui-btn" id="test1">
+                                <i class="layui-icon">&#xe67c;</i>上传图片
+                            </button>
+                            <div class="layui-upload-list">
+                                <img src="{{old('art_thumb')}}" class="layui-upload-img" id="demo1" style="width:100px;height:100px;">
+                                <p id="demoText"></p>
+                            </div>
                         </td>
                     </tr>
+
                     <tr>
                         <th><i class="require"></i>文章关键字：</th>
                         <td>
@@ -106,6 +91,14 @@
                         </td>
                     </tr>
                     
+                    <tr>
+                        <th>
+                            文章内容(markdown)：
+                        </th>
+                        <td>
+                            
+                        </td>
+                    </tr>
                     
                     <tr>
                         <th>文章内容：</th>
@@ -137,4 +130,38 @@
         </form>
     </div>
 
+    <script>
+        layui.use('upload',function(){
+            var upload=layui.upload;
+            var uploadInst=upload.render({
+                elem:'#test1',
+                url:"{{route('upload')}}",
+                method:'post',
+                accept:'images',
+                field:'fileImage',
+                data:{
+                    "_token":"{{csrf_token()}}"
+                },
+                before:function(obj){
+                    obj.preview(function(index,file,result){
+                        $('#demo1').attr('src',result);
+                    });
+                },
+                done: function(res){
+                    //如果上传失败
+                    $('#slImg').val(res.data.no_http_src);
+                    //上传成功
+                },
+                error: function(){
+                    //演示失败状态，并实现重传
+                    var demoText = $('#demoText');
+                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                    demoText.find('.demo-reload').on('click', function(){
+                        uploadInst.upload();
+                    });
+                }
+            });
+        });
+    </script>
+    
 @endsection

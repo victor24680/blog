@@ -9,6 +9,9 @@
 	<script type="text/javascript" src="{{asset('style/js/ch-ui.admin.js')}}"></script>
 	<script type="text/javascript" src="{{asset('style/js/layer/layer.js')}}"></script>
 	<script type="text/javascript" src="{{asset('style/js/layui/layui.js')}}"></script>
+
+	<link rel="stylesheet" href="{{asset('markdown/editor/css/editormd.min.css')}}"/>
+	<script src="{{asset('markdown/editor/editormd.min.js')}}"></script>  
 </head>
 <body>
     @yield('content')
