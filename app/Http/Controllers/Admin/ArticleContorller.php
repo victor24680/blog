@@ -10,7 +10,7 @@ use Validator;
 class ArticleContorller extends CommonController
 {
     //http://www.layui.com/demo/upload.html[前端框架]
-    //文章列表页；
+    //文章列表页；SyntaxHighlighter
     public function index()
     {
         $data = Article::orderBy('art_order', 'desc')->orderBy('art_id', 'desc')->paginate(5);

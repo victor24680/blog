@@ -9,6 +9,22 @@
 <link href="{{asset('home/css/new.css')}}" rel="stylesheet">
 <link href="{{asset('home/css/index.css')}}" rel="stylesheet">
 <link href="{{asset('home/css/style.css')}}" rel="stylesheet">
+
+{{--<script type="text/javascript" src="{{asset('synxhight/scripts/shCore.js')}}"></script>
+<script type="text/javascript" src="{{asset('synxhight/scripts/shBrushJScript.js')}}"></script>
+<link type="text/css" rel="stylesheet" href="{{asset('synxhight/styles/shCoreDefault.css')}}"/>--}}
+
+@include('layouts.title')
+
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+<style type="text/css">
+	.syntaxhighlighter table {
+		width: 100% !important;
+		margin: 1px 0 !important;
+	}
+</style>
 </head>
 <body>
 <header>

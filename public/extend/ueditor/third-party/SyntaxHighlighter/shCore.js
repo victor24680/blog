@@ -709,7 +709,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
             'gutter' : true,
 
             /** Enables or disables toolbar. */
-            'toolbar' : true,
+            'toolbar' : false,
 
             /** Enables quick code copy and paste from double click. */
             'quick-code' : true,
