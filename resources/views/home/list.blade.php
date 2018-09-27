@@ -1,7 +1,12 @@
 @extends('layouts.home')
 @section('content')
 <article class="blogs">
-<h1 class="t_nav"><span>“慢生活”不是懒惰，放慢速度不是拖延时间，而是让我们在生活中寻找到平衡。</span><a href="/" class="n1">网站首页</a><a href="/" class="n2">慢生活</a></h1>
+<h1 class="t_nav"><span>“慢生活”不是懒惰，放慢速度不是拖延时间，而是让我们在生活中寻找到平衡。
+    </span><a href="/" class="n1">网站首页</a>
+    <a href="{{route('artlist',['cate_id'=>$field->cate_id])}}" class="n2">
+        {{$field->cate_name}}
+    </a>
+</h1>
 <div class="newblog left">
     {{--<span>分类：[<a href="/news/life/">程序人生</a>]</span>--}}
     @foreach($articleList as $val)
@@ -23,38 +28,45 @@
     </div>
 </div>
 <aside class="right">
+
    <div class="rnav">
         <ul>
-            <li class="rnav1"><a href="/download/" target="_blank">日记</a></li>
-            <li class="rnav2"><a href="/newsfree/" target="_blank">程序人生</a></li>
-            <li class="rnav3"><a href="/web/" target="_blank">欣赏</a></li>
-            <li class="rnav4"><a href="/newshtml5/" target="_blank">短信祝福</a></li>
+            @foreach($cateList as $key => $vo)
+                <li
+                    <?php
+                        switch ($key) {
+                            case 0:
+                                echo 'class="rnav1"';
+                                break;
+                            case 1:
+                                echo 'class="rnav2"';
+                                break;
+                            case 2:
+                                echo 'class="rnav3"';
+                                break;
+                            case 3:
+                                echo 'class="rnav4"';
+                                break;
+                        }
+                    ?>
+                ><a href="/artlist/{{$vo->cate_id}}" target="_blank">{{$vo->cate_name}}</a></li>
+            @endforeach
+
+            {{--<li class="rnav2"><a href="/newsfree/" target="_blank">程序人生</a></li>--}}
+            {{--<li class="rnav3"><a href="/web/" target="_blank">欣赏</a></li>--}}
+            {{--<li class="rnav4"><a href="/newshtml5/" target="_blank">短信祝福</a></li>--}}
         </ul>
     </div>
+
 <div class="news">
 <h3>
       <p>最新<span>文章</span></p>
     </h3>
-    <ul class="rank">
-      <li><a href="/" title="Column 三栏布局 个人网站模板" target="_blank">Column 三栏布局 个人网站模板</a></li>
-      <li><a href="/" title="with love for you 个人网站模板" target="_blank">with love for you 个人网站模板</a></li>
-      <li><a href="/" title="免费收录网站搜索引擎登录口大全" target="_blank">免费收录网站搜索引擎登录口大全</a></li>
-      <li><a href="/" title="做网站到底需要什么?" target="_blank">做网站到底需要什么?</a></li>
-      <li><a href="/" title="企业做网站具体流程步骤" target="_blank">企业做网站具体流程步骤</a></li>
-      <li><a href="/" title="建站流程篇——教你如何快速学会做网站" target="_blank">建站流程篇——教你如何快速学会做网站</a></li>
-      <li><a href="/" title="box-shadow 阴影右下脚折边效果" target="_blank">box-shadow 阴影右下脚折边效果</a></li>
-      <li><a href="/" title="打雷时室内、户外应该需要注意什么" target="_blank">打雷时室内、户外应该需要注意什么</a></li>
-    </ul>
+    @include('layouts.newarticle')
     <h3 class="ph">
       <p>点击<span>排行</span></p>
     </h3>
-    <ul class="paih">
-      <li><a href="/" title="Column 三栏布局 个人网站模板" target="_blank">Column 三栏布局 个人网站模板</a></li>
-      <li><a href="/" title="withlove for you 个人网站模板" target="_blank">with love for you 个人网站模板</a></li>
-      <li><a href="/" title="免费收录网站搜索引擎登录口大全" target="_blank">免费收录网站搜索引擎登录口大全</a></li>
-      <li><a href="/" title="做网站到底需要什么?" target="_blank">做网站到底需要什么?</a></li>
-      <li><a href="/" title="企业做网站具体流程步骤" target="_blank">企业做网站具体流程步骤</a></li>
-    </ul>
+    @include('layouts.viewarticle')
     </div>
     <div class="visitors">
       <h3><p>最近访客</p></h3>
@@ -72,7 +84,5 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
     <!-- Baidu Button END -->   
 </aside>
 </article>
-<footer>
-  <p>Design by 后盾网 <a href="http://www.miitbeian.gov.cn/" target="_blank">http://www.houdunwang.com</a> <a href="/">网站统计</a></p>
-</footer>
+@include('layouts.footer')
 @endsection

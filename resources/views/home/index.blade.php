@@ -3,11 +3,11 @@
 <div class="banner">
   <section class="box">
     <ul class="texts">
-      <p>打了死结的青春，捆死一颗苍白绝望的灵魂。</p>
-      <p>为自己掘一个坟墓来葬心，红尘一梦，不再追寻。</p>
-      <p>加了锁的青春，不会再因谁而推开心门。</p>
+      <p>开启的博客的钥匙，迈向记忆之门。</p>
+      <p>记忆之门，记录走过的路。</p>
+      <p>记忆之门，为您开启崭新的旅程。</p>
     </ul>
-    <div class="avatar"><a href="#"><span>后盾</span></a> </div>
+    <div class="avatar"><a href="#"><span>程序人生</span></a> </div>
   </section>
 </div>
 
@@ -45,41 +45,47 @@
         <span>个人博客：[<a href="/">程序人生</a>]</span>
       </p>
     @endforeach
-
+    <div class="page">
+       {{$articleList->links()}}
+    </div>
   </div>
 
 
   <aside class="right">
     <!-- Baidu Button BEGIN -->
-      <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><a class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a class="shareCount"></a></div>
+      <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+        <a class="bds_tsina"></a>
+        <a class="bds_qzone"></a>
+        <a class="bds_tqq"></a>
+        <a class="bds_renren"></a>
+        <span class="bds_more"></span>
+        <a class="shareCount">0</a>
+      </div>
       <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585" ></script>
       <script type="text/javascript" id="bdshell_js"></script>
       <script type="text/javascript">
         document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
       </script>
     <!-- Baidu Button END -->
+    <!----分界线---->
     <div class="blank"></div>
     <div class="news">
+        <h3>
+            <p>最新<span>文章</span></p>
+        </h3>
+        @include('layouts.newarticle')
 
-    <h3>
-        <p>最新<span>文章</span></p>
-    </h3>
-    @include('layouts.newarticle')
+        <h3 class="ph">
+            <p>点击<span>排行</span></p>
+        </h3>
+        @include('layouts.viewarticle')
 
-    <h3 class="ph">
-        <p>点击<span>排行</span></p>
-    </h3>
-    @include('layouts.viewarticle')
-
-    <h3 class="links">
-        <p>友情<span>链接</span></p>
-    </h3>
-    @include('layouts.linkarticle')
-
+        <h3 class="links">
+            <p>友情<span>链接</span></p>
+        </h3>
+        @include('layouts.linkarticle')
     </div>
-    </aside>
+  </aside>
 </article>
-<footer>
-  <p>Design by 后盾网 <a href="http://www.miitbeian.gov.cn/" target="_blank">http://www.houdunwang.com</a> <a href="/">网站统计</a></p>
-</footer>
+@include('layouts.footer')
 @endsection

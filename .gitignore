@@ -6,3 +6,6 @@ Homestead.json
 /.env
 /config/databases.php
 /.idea
+/.idea/workspace.xml
+/nbproject/
+
