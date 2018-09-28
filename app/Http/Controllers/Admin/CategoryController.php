@@ -105,7 +105,7 @@ class CategoryController extends CommonController
         }
         $res=Category::where(['cate_id'=>$cate_id])->update($input);
         if($res){
-            return redirect('admin/index');
+            return redirect('admin/category');
         }else{
             return redirect()->back()->withErrors(['msg'=>'修改失败，请稍后再尝试']);
         }
@@ -115,7 +115,6 @@ class CategoryController extends CommonController
         $item=Category::find($cate_id);
         $lists= Category::where(['cate_pid'=>0])->get();
         return view('admin.category.edit',  compact('item','lists'));
-        //return view('admin.category.edit')->with(['lists'=>$list,'item'=>$item]);
     }
     
 }

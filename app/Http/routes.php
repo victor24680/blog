@@ -24,11 +24,6 @@ Route::group(['middleware', ['web']], function () {
 
 });
 
-//Route::get('/home','Home\IndexController@index');
-//Route::auth();
-//Route::get('/home', 'HomeController@index');
-
-
 //定向到文件
 Route::get('/admin', 'Admin\LogRegister@login');
 

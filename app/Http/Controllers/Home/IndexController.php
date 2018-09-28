@@ -76,7 +76,10 @@ class IndexController extends CommonController
         $field->title     = $cateInfos->cate_title;
         $field->cate_name = $cateInfos->cate_name;
         $field->cate_id   = $cate_id;
-        $articleList      = Article::where('cate_pid', $cate_id)->orderBy('art_order', 'desc')->orderBy('art_time', 'desc')->paginate(2);
+        $articleList      = Article::where('cate_pid', $cate_id)
+            ->orderBy('art_order', 'desc')
+            ->orderBy('art_time', 'desc')
+            ->paginate(1);
         foreach ($articleList as $key => $value) {
             $value->art_description = str_limit($value->art_description, 200, '. . . . . .');
         }
