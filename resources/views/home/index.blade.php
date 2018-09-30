@@ -39,7 +39,7 @@
         {{$val->art_description}}
         <a title="{{$val->art_description}}" href="{{url('detail')}}?id={{$val->art_id}}" target="_blank" class="readmore">阅读全文>></a>
       </ul>
-      <p class="dateview">
+      <p class="dateview" style="padding-left:35px; ">
         <span>{{date('Y-m-d',$val->art_time)}}</span>
         <span>作者：{{$val->art_editor}}</span>
         <span>个人博客：[<a href="/">程序人生</a>]</span>
