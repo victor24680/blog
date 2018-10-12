@@ -14,7 +14,7 @@ class UploadyController extends Controller
         $realPath=$file->getRealPath();//临时文件名的绝对路径
         $entension=$file->getClientOriginalExtension();//上传文件的后缀
         $newName=date('YmdHis').mt_rand(100,999).'.'.$entension;//app_path(),base_path()
-        $path=$file->move(base_path().'/public/uploads',$newName);
+        $path=$file->move(base_path().'/uploads',$newName);
         $data=[
             'code'=>0,
             'msg'=>'上传成功',

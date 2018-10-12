@@ -5,13 +5,13 @@
 <title>{{$field->title}}—{{Config::get('web.web_title')}}</title>
 <meta name="keywords" content="个人博客,后盾个人博客,个人博客模板,后盾" />
 <meta name="description" content="后盾个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
-<link href="{{asset('home/css/base.css')}}" rel="stylesheet">
-<link href="{{asset('home/css/new.css')}}" rel="stylesheet">
-<link href="{{asset('home/css/index.css')}}" rel="stylesheet">
-<link href="{{asset('home/css/style.css')}}" rel="stylesheet">
-<link rel="stylesheet" href="{{asset('style/js/layui/css/layui.css')}}">
-<script type="text/javascript" src="{{asset('style/js/layer/layer.js')}}"></script>
-<script type="text/javascript" src="{{asset('style/js/layui/layui.js')}}"></script>
+<link href="{{asset('public/home/css/base.css')}}" rel="stylesheet">
+<link href="{{asset('public/home/css/new.css')}}" rel="stylesheet">
+<link href="{{asset('public/home/css/index.css')}}" rel="stylesheet">
+<link href="{{asset('public/home/css/style.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('public/style/js/layui/css/layui.css')}}">
+<script type="text/javascript" src="{{asset('public/style/js/layer/layer.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/style/js/layui/layui.js')}}"></script>
 
 {{--<script type="text/javascript" src="{{asset('synxhight/scripts/shCore.js')}}"></script>
 <script type="text/javascript" src="{{asset('synxhight/scripts/shBrushJScript.js')}}"></script>
@@ -49,7 +49,7 @@
    
     @yield('content')
     
-<script src="{{asset('home/js/silder.js')}}"></script>
+<script src="{{asset('public/home/js/silder.js')}}"></script>
 </body>
 </html>
 

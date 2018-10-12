@@ -18,7 +18,7 @@
             </h3>
             <ul>
                 @foreach($viewArticleList as $val)
-                    <li><a href="/" target="_blank"><img src="{{asset('home/images/02.jpg')}}"></a><span>Green绿色小清新的夏天-个人博客模板</span>
+                    <li><a href="/" target="_blank"><img src="{{asset('public/home/images/02.jpg')}}"></a><span>Green绿色小清新的夏天-个人博客模板</span>
                     </li>
                 @endforeach
             </ul>
