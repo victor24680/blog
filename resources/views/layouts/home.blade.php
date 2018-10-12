@@ -9,6 +9,9 @@
 <link href="{{asset('home/css/new.css')}}" rel="stylesheet">
 <link href="{{asset('home/css/index.css')}}" rel="stylesheet">
 <link href="{{asset('home/css/style.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('style/js/layui/css/layui.css')}}">
+<script type="text/javascript" src="{{asset('style/js/layer/layer.js')}}"></script>
+<script type="text/javascript" src="{{asset('style/js/layui/layui.js')}}"></script>
 
 {{--<script type="text/javascript" src="{{asset('synxhight/scripts/shCore.js')}}"></script>
 <script type="text/javascript" src="{{asset('synxhight/scripts/shBrushJScript.js')}}"></script>
@@ -23,6 +26,9 @@
 	.syntaxhighlighter table {
 		width: 100% !important;
 		margin: 1px 0 !important;
+	}
+	.syntaxhighlighter .toolbar{
+		display: none;
 	}
 </style>
 </head>
