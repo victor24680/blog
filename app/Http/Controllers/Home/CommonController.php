@@ -31,6 +31,7 @@ class CommonController extends Controller
             'viewArticleList'=>$viewArticleList,
             'linkList'=>$linkList,
         ];
+
         View::share($data);
     }
 }

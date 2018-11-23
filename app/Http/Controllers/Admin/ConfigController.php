@@ -34,6 +34,7 @@ class ConfigController extends CommonController
         $conf_content = $input['conf_content'];
         foreach ($conf_content as $key => $value) {
             if (empty($value) && $value !== 0 && $value !== '0') {
+
                 return redirect()->back()->withErrors(["配置内容不能空"]);
             }
             $res = Config::find($key);
@@ -43,6 +44,7 @@ class ConfigController extends CommonController
             $res->conf_content = $value;
             $res->save();
         }
+
         $this->inputFile();
 
         return redirect()->back()->withErrors("修改成功");

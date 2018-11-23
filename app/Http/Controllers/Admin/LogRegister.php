@@ -90,7 +90,7 @@ class LogRegister extends Controller
             }
             $username=session('user')->username;
             $db_password=DB::table('admin')->where(['username'=>$username])->value('password');
-            $decrypt_password=Crypt::decrypt($db_password);
+            $decrypt_password=\Illuminate\Support\Facades\Crypt::decrypt($db_password);
             if($decrypt_password!=$password_o){
                 return redirect()->back()->withErrors(['msg'=>'原密码错误']);
             }
